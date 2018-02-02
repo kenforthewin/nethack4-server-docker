@@ -13,6 +13,7 @@ USER root
 RUN echo "53430 stream tcp  nowait nethack /app/nethack4-server nethack4-server" >> /etc/inetd.conf
 RUN echo "53430 stream tcp6 nowait nethack /app/nethack4-server nethack4-server" >> /etc/inetd.conf
 
-EXPOSE 23
+VOLUME /app/save
+EXPOSE 53430
 COPY entrypoint.sh .
 ENTRYPOINT [ "./entrypoint.sh" ]
