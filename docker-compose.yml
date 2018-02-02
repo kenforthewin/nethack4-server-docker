@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  app: 
+    build: .
+    ports:
+      - 53430:53430
+    depends_on:
+      - db
+    env_file:
+      - .env
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${DBPASS}
+      - POSTGRES_USER=${DBUSER}
+      - POSTGRES_DB=${DBNAME}
